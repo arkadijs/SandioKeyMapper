@@ -250,6 +250,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 	hDisplayBox = CreateWindow(_T("EDIT"), _T(""), WS_CHILD | WS_VISIBLE | ES_LEFT | ES_AUTOHSCROLL | ES_AUTOVSCROLL | ES_READONLY | ES_MULTILINE, 0, 0, 700, 300, hWnd, NULL, hInst, 0);
 	UpdateWindowText();
 	fOldDisplayWndProc = (WNDPROC)SetWindowLong(hDisplayBox, GWL_WNDPROC, (LONG)TextBoxWndProc);
+	fOldDisplayWndProc = (WNDPROC)SetWindowLongPtr(hDisplayBox, GWLP_WNDPROC, (LONG_PTR)TextBoxWndProc);
 	ShowWindow(hWnd, nCmdShow);
 	RegRawInput(hWnd);
 
